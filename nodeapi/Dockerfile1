@@ -9,3 +9,6 @@ COPY --from=nodeapi /usr/src/app/nodeapi/ ./
 RUN ls
 CMD [ "/bin/bash", "-c", "cd /usr/src/app && npm start"]
 EXPOSE 5000
+
+
+
