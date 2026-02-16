@@ -19,7 +19,7 @@ services:
       container_name: nodeapi
       depends_on:
          - nginx
-         - emango
+         - emongo
    webapi:
       build:
          context: ./javaapi
@@ -42,7 +42,7 @@ services:
       build: mango:4
       ports: 
          - "27017:27017"
-      container_name: emango
+      container_name: emongo
       environment:
          - MONGO_INITDB_DATABASE=epoc
     
