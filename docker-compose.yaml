@@ -31,15 +31,15 @@ services:
          - emartdb
 
    nginx:
-      build: nginx:latest
+      restart: always
+      image: nginx:latest
       ports: 
          - "80:80"
-      restart: always
       container_name: nginx
       volumes:
          - "./nginx/default.conf:/etc/nginx/conf.d/default.conf"
    emongo:
-      build: mango:4
+      image: mango:4
       ports: 
          - "27017:27017"
       container_name: emongo
@@ -47,7 +47,7 @@ services:
          - MONGO_INITDB_DATABASE=epoc
     
    emartdb:
-      build: mysql:8.0.33
+      image: mysql:8.0.33
       ports: 
          - "3306:3306"
       container_name: emartdb
