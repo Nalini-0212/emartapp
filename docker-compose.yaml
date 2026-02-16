@@ -4,7 +4,7 @@ services:
    client:
       build:
          context: ./client
-      port: 
+      ports: 
          - "4200:4200"
       container_name: client
       depends_on:
@@ -13,7 +13,7 @@ services:
    api:
       build:
          context: ./nodeapi
-      port: 
+      ports: 
          - "5000:5000"
       restart: always
       container_name: nodeapi
@@ -23,7 +23,7 @@ services:
    webapi:
       build:
          context: ./javaapi
-      port: 
+      ports: 
          - "9000:9000"
       restart: always
       container_name: javaapi
@@ -32,7 +32,7 @@ services:
 
    nginx:
       build: nginx:latest
-      port: 
+      ports: 
          - "80:80"
       restart: always
       container_name: nginx
@@ -40,7 +40,7 @@ services:
          - "./nginx/default.conf:/etc/nginx/conf.d/default.conf"
    emongo:
       build: mango:4
-      port: 
+      ports: 
          - "27017:27017"
       container_name: emango
       environment:
@@ -48,7 +48,7 @@ services:
     
    emartdb:
       build: mysql:8.0.33
-      port: 
+      ports: 
          - "3306:3306"
       container_name: emartdb
       environment:
