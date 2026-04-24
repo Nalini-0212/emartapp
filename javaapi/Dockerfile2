@@ -1,0 +1,11 @@
+FROM maven:3.9-jdk21-debian13-dev AS build
+WORKDIR /app
+COPY javaapi/* ./javaapi/
+RUN cd javaapi && mvn clean package -DskipTests
+
+FROM openjdk:21-rc-slim
+WORKDIR /app
+COPY --from=build /app/javaapi/target/*.jar ./app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
